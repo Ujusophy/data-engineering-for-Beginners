@@ -437,8 +437,7 @@ def retry_operation(func, max_retries=3, delay=1):
 ```
 
 ## Practice Exercise
-
-Create a Python script that:
+Use this dataset [dataset/orders.csv](../dataset/orders.csv) to create a Python script that:
 1. Reads a CSV file
 2. Filters rows based on a condition
 3. Adds a new calculated column
@@ -456,7 +455,7 @@ You now know:
 
 ## Next Steps
 
-Practice these concepts with the [Python exercises](../exercises/python-exercises.md), then move on to [SQL Fundamentals](03-sql-fundamentals.md).
+Move on to [SQL Fundamentals](03-sql-fundamentals.md).
 
 ## Additional Resources
 
