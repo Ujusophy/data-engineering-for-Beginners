@@ -669,24 +669,18 @@ Need legacy compatibility? → CSV/XML
 ```
 
 ## Practice Exercises
-
+You can use any of the [csv files](../dataset/) and [OpenWeatherMap API](https://openweathermap.org/)
 1. Convert a CSV file to Parquet and compare file sizes
 2. Read a JSON API response and save as Parquet
 3. Implement a format converter that handles CSV, JSON, and Parquet
 4. Test read/write performance of different formats
 5. Create a partitioned Parquet dataset
 
-## Next Steps
-
-Learn about [Introduction to ETL](05-intro-to-etl.md) to understand how to build pipelines that work with these formats.
-
 ## Additional Resources
 
 - [Apache Parquet Documentation](https://parquet.apache.org/)
-- [Apache Avro Documentation](https://avro.apache.org/)
 - [Pandas I/O Tools](https://pandas.pydata.org/docs/user_guide/io.html)
-- [PyArrow Documentation](https://arrow.apache.org/docs/python/)
 
 ---
 
-**Next**: [Introduction to ETL](05-intro-to-etl.md)
+**Next**: [Module 2: Databases](../02-databases/)
