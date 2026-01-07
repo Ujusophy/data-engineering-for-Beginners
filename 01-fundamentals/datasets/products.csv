@@ -1,0 +1,16 @@
+product_id,name,category,price,stock_quantity
+101,Laptop,Electronics,1200.00,15
+102,Mouse,Electronics,25.00,50
+103,Keyboard,Electronics,75.00,30
+104,Monitor,Electronics,300.00,20
+105,Webcam,Electronics,80.00,25
+106,Headphones,Electronics,150.00,40
+107,USB Cable,Accessories,5.00,100
+108,Desk Lamp,Furniture,30.00,35
+109,Phone Stand,Accessories,20.00,60
+110,Cable Organizer,Accessories,10.00,75
+111,Office Chair,Furniture,250.00,12
+112,Desk Pad,Accessories,15.00,45
+113,External SSD,Electronics,120.00,28
+114,Wireless Charger,Electronics,35.00,55
+115,Laptop Stand,Accessories,,22
