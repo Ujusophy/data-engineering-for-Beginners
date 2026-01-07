@@ -445,40 +445,6 @@ Create a Python script that:
 4. Writes the result to a new CSV file
 5. Includes error handling and logging
 
-```python
-import pandas as pd
-import logging
-
-logging.basicConfig(level=logging.INFO)
-
-def process_sales_data(input_file, output_file):
-    """Process sales data."""
-    try:
-        # Read data
-        logging.info(f"Reading {input_file}")
-        df = pd.read_csv(input_file)
-        
-        # Filter
-        df = df[df['amount'] > 0]
-        
-        # Transform
-        df['amount_with_tax'] = df['amount'] * 1.1
-        
-        # Write
-        logging.info(f"Writing to {output_file}")
-        df.to_csv(output_file, index=False)
-        
-        logging.info("Processing complete")
-        return True
-        
-    except Exception as e:
-        logging.error(f"Error: {e}")
-        return False
-
-if __name__ == "__main__":
-    process_sales_data('sales.csv', 'sales_processed.csv')
-```
-
 ## Summary
 
 You now know:
