@@ -187,210 +187,6 @@ table = pq.read_table('data.parquet')
 df = table.to_pandas()
 ```
 
-### 4. Avro
-
-**What is it?**
-Row-based binary format with schema evolution support. Also from Apache.
-
-**Key Features:**
-- Row-based storage
-- Schema stored with data
-- Compact binary format
-- Schema evolution (can change over time)
-- Language-agnostic
-
-**Pros:**
-- Efficient serialization
-- Schema evolution support
-- Good for streaming data
-- Compact storage
-- Fast write performance
-
-**Cons:**
-- Not human-readable
-- Requires schema definition
-- Less efficient for analytics than Parquet
-- Smaller ecosystem than Parquet
-
-**When to Use:**
-- Kafka message serialization
-- Data streaming pipelines
-- Systems requiring schema evolution
-- ETL intermediate storage
-- Cross-language data exchange
-
-**Python Example:**
-```python
-from avro.datafile import DataFileWriter, DataFileReader
-from avro.io import DatumWriter, DatumReader
-import avro.schema
-
-# Define schema
-schema = avro.schema.parse('''
-{
-    "type": "record",
-    "name": "User",
-    "fields": [
-        {"name": "name", "type": "string"},
-        {"name": "age", "type": "int"}
-    ]
-}
-''')
-
-# Write Avro
-with open('data.avro', 'wb') as f:
-    writer = DataFileWriter(f, DatumWriter(), schema)
-    writer.append({"name": "Alice", "age": 25})
-    writer.close()
-
-# Read Avro
-with open('data.avro', 'rb') as f:
-    reader = DataFileReader(f, DatumReader())
-    for record in reader:
-        print(record)
-    reader.close()
-```
-
-### 5. XML (eXtensible Markup Language)
-
-**What is it?**
-Markup language that defines rules for encoding documents in a format that is both human and machine-readable.
-
-**Example:**
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<users>
-    <user>
-        <id>1</id>
-        <name>Alice</name>
-        <age>25</age>
-        <address>
-            <city>New York</city>
-            <state>NY</state>
-        </address>
-    </user>
-    <user>
-        <id>2</id>
-        <name>Bob</name>
-        <age>30</age>
-    </user>
-</users>
-```
-
-**Pros:**
-- Self-descriptive
-- Supports complex hierarchies
-- Validation via schemas (XSD)
-- Wide enterprise adoption
-- Namespace support
-
-**Cons:**
-- Verbose (large file sizes)
-- Complex to parse
-- Slower than JSON
-- Less popular in modern systems
-
-**When to Use:**
-- Legacy enterprise systems
-- SOAP APIs
-- Configuration files
-- Document markup
-- When validation is critical
-
-**Python Example:**
-```python
-import xml.etree.ElementTree as ET
-
-# Parse XML
-tree = ET.parse('data.xml')
-root = tree.getroot()
-
-for user in root.findall('user'):
-    name = user.find('name').text
-    age = user.find('age').text
-    print(f"{name}: {age}")
-
-# Create XML
-root = ET.Element('users')
-user = ET.SubElement(root, 'user')
-ET.SubElement(user, 'name').text = 'Alice'
-ET.SubElement(user, 'age').text = '25'
-
-tree = ET.ElementTree(root)
-tree.write('output.xml')
-```
-
-### 6. ORC (Optimized Row Columnar)
-
-**What is it?**
-Columnar storage format optimized for Hive and Hadoop ecosystem.
-
-**Key Features:**
-- Columnar storage
-- Heavy compression
-- Built-in indexes
-- ACID transaction support
-- Type-aware encoding
-
-**Pros:**
-- Excellent compression
-- Fast reads
-- Better than Parquet for Hive
-- Built-in statistics
-
-**Cons:**
-- Less ecosystem support than Parquet
-- Primarily Hadoop/Hive focused
-- Not as portable
-
-**When to Use:**
-- Hive data warehouses
-- Hadoop ecosystem
-- HDFS storage
-
-### 7. Protocol Buffers (Protobuf)
-
-**What is it?**
-Binary serialization format developed by Google.
-
-**Key Features:**
-- Extremely compact
-- Fast serialization/deserialization
-- Strongly typed
-- Code generation for multiple languages
-
-**Pros:**
-- Very fast
-- Small size
-- Type safety
-- Backward/forward compatibility
-
-**Cons:**
-- Not human-readable
-- Requires schema definition
-- Requires code generation
-
-**When to Use:**
-- Microservices communication
-- gRPC APIs
-- High-performance systems
-- Mobile applications
-
-## Format Comparison
-
-### Storage Efficiency
-
-```
-Sample Dataset: 1M records with 10 columns
-
-Format          Size        Compression Ratio
-CSV             450 MB      1x (baseline)
-JSON            650 MB      0.69x (larger)
-Parquet         45 MB       10x
-Avro            120 MB      3.75x
-ORC             40 MB       11.25x
-```
-
 ### Performance Characteristics
 
 | Format   | Read Speed | Write Speed | Random Access | Compression | Human Readable |
@@ -398,22 +194,14 @@ ORC             40 MB       11.25x
 | CSV      | Slow       | Fast        | Poor          | None        | ✓              |
 | JSON     | Slow       | Fast        | Good          | None        | ✓              |
 | Parquet  | Fast       | Slow        | Excellent     | Excellent   | ✗              |
-| Avro     | Fast       | Fast        | Good          | Good        | ✗              |
-| XML      | Slow       | Slow        | Poor          | None        | ✓              |
-| ORC      | Fast       | Slow        | Excellent     | Excellent   | ✗              |
-| Protobuf | Very Fast  | Very Fast   | Good          | Good        | ✗              |
 
 ## Choosing the Right Format
 
 ### For Data Storage
 
 **Analytics/Data Warehouse:**
-- Use: **Parquet** or **ORC**
+- Use: **Parquet** 
 - Why: Columnar format optimized for queries
-
-**Streaming/Event Data:**
-- Use: **Avro** or **Protobuf**
-- Why: Fast serialization, schema evolution
 
 **Archive/Backup:**
 - Use: **Parquet**
@@ -424,10 +212,6 @@ ORC             40 MB       11.25x
 **APIs:**
 - Use: **JSON**
 - Why: Web-friendly, human-readable
-
-**Microservices:**
-- Use: **Protobuf** or **Avro**
-- Why: Fast, compact, strongly typed
 
 **Data Exchange:**
 - Use: **CSV** or **JSON**
@@ -440,7 +224,7 @@ ORC             40 MB       11.25x
 - Why: Easy to create and inspect
 
 **Production Pipelines:**
-- Use: **Parquet** or **Avro**
+- Use: **Parquet** 
 - Why: Performance and efficiency
 
 ## Compression
@@ -501,14 +285,6 @@ df2.to_parquet('data.parquet', engine='fastparquet', append=True)
 
 # Reading back - missing values filled with NULL
 df = pd.read_parquet('data.parquet')
-```
-
-**Avro:**
-```python
-# Avro explicitly supports schema evolution
-# Can add fields with defaults
-# Can remove optional fields
-# Can rename fields with aliases
 ```
 
 ### Schema Definition
@@ -655,17 +431,15 @@ for file in csv_files:
 - CSV: Simple, human-readable, best for small datasets
 - JSON: Flexible, nested structures, APIs
 - Parquet: Columnar, compressed, analytics
-- Avro: Row-based, streaming, schema evolution
 - Choose format based on: size, access patterns, performance needs
 
 **Decision Tree:**
 ```
 Need human-readable? → CSV/JSON
-Need best compression? → Parquet/ORC
-Need fast streaming? → Avro/Protobuf
+Need best compression? → Parquet
 Need web compatibility? → JSON
 Need analytics performance? → Parquet
-Need legacy compatibility? → CSV/XML
+Need legacy compatibility? → CSV
 ```
 
 ## Practice Exercises
