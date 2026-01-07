@@ -1,0 +1,21 @@
+id,name,age,city,email,registration_date,is_active
+1,Alice Johnson,25,New York,alice.j@example.com,2024-12-15,true
+2,Bob Smith,30,San Francisco,bob.smith@example.com,2024-11-20,true
+3,Charlie Brown,35,Los Angeles,charlie.b@example.com,2024-10-05,true
+4,Diana Prince,28,Chicago,diana.p@example.com,2024-12-28,true
+5,Eve Williams,32,Seattle,eve.w@example.com,2024-09-12,false
+6,Frank Miller,45,New York,frank.m@example.com,2024-08-03,true
+7,Grace Lee,29,Boston,grace.l@example.com,2024-12-20,true
+8,Henry Davis,38,San Francisco,henry.d@example.com,2024-07-15,true
+9,Ivy Chen,27,Austin,ivy.c@example.com,2024-12-10,true
+10,Jack Wilson,41,New York,jack.w@example.com,2024-06-22,false
+11,Kate Brown,33,Los Angeles,kate.b@example.com,2024-11-18,true
+12,Leo Martinez,36,Chicago,leo.m@example.com,2024-05-30,true
+13,Mia Anderson,24,Seattle,mia.a@example.com,2024-12-25,true
+14,Noah Taylor,31,Portland,noah.t@example.com,2024-04-10,true
+15,Olivia Moore,26,New York,olivia.m@example.com,2024-12-18,true
+16,Paul Jackson,39,Denver,paul.j@example.com,2024-03-14,false
+17,Quinn White,34,Miami,quinn.w@example.com,2024-12-05,true
+18,Rachel Green,28,Boston,rachel.g@example.com,2024-02-20,true
+19,Sam Harris,42,San Francisco,sam.h@example.com,2024-12-22,true
+20,Tina Clark,30,Austin,tina.c@example.com,2024-01-08,true
