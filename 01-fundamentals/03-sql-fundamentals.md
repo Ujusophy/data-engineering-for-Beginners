@@ -740,6 +740,7 @@ DO UPDATE SET
 ## Practice Exercises
 
 ### Exercise 1: Basic Queries
+Use this dataset [dataset/users.csv](../dataset/users.csv)
 Write queries to:
 1. Get all users from New York
 2. Count users by city
@@ -747,12 +748,13 @@ Write queries to:
 4. Get users who registered in the last 30 days
 
 ### Exercise 2: Joins
-Given users and orders tables:
+Use this dataset [dataset/orders.csv](../dataset/orders.csv)
 1. List all users with their total order count
 2. Find users who never placed an order
 3. Get top 5 customers by total spending
 
 ### Exercise 3: Window Functions
+Use this dataset [dataset/products.csv](../dataset/products.csv)
 1. Rank products by price within each category
 2. Calculate running total of daily sales
 3. Find the difference between each order and the previous order
@@ -778,7 +780,7 @@ You now know:
 
 ## Next Steps
 
-Practice these concepts with the [SQL exercises](../exercises/sql-exercises.md), then learn about [Data Formats](04-data-formats.md).
+Learn about [Data Formats](04-data-formats.md).
 
 ## Additional Resources
 
