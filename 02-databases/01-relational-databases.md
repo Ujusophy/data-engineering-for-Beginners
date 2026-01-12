@@ -319,7 +319,7 @@ psql database_name < backup.sql
    CREATE INDEX ON users(email);  -- For lookups
    ```
 
-2. **Avoid SELECT**
+2. **Avoid SELECT ***
    ```sql
    -- Bad
    SELECT * FROM users;
@@ -382,6 +382,57 @@ CREATE TABLE orders (
 -- Good: Calculate on read
 SELECT subtotal + tax as total FROM orders;
 ```
+
+## Practice Exercise
+
+Design a database schema for a **Library Management System**. Your schema should handle:
+
+**Requirements:**
+1. Track books (title, ISBN, author, publication year, available copies)
+2. Track members (name, email, membership date)
+3. Track book loans (which member borrowed which book, when, return date)
+4. Track authors (books can have multiple authors)
+5. Track book categories (books can belong to multiple categories)
+
+**Dataset Provided:**
+Use the sample data in the `datasets/` folder:
+- `books.csv` - 15 programming books
+- `authors.csv` - 18 authors
+- `book_authors.csv` - Book-author relationships
+- `members.csv` - 10 library members
+- `loans.csv` - 15 loan records (some books still borrowed, some overdue)
+- `categories.csv` - 8 book categories
+- `book_categories.csv` - Book-category relationships
+
+**Tasks:**
+1. Identify the entities needed
+2. Define the relationships between entities
+3. Write CREATE TABLE statements with:
+   - Appropriate primary keys
+   - Foreign keys with proper references
+   - Necessary constraints (NOT NULL, UNIQUE, CHECK)
+   - Appropriate data types
+4. Create indexes on foreign keys
+5. Import the provided CSV data into your tables
+6. Write queries to answer:
+   - List all books borrowed by a specific member
+   - Find all available books in a category
+   - Show overdue books (return_date is NULL and due_date < today)
+   - Which member has borrowed the most books?
+   - Which authors have written multiple books?
+   - What's the most popular category?
+
+**Hints:**
+- ISBN is the primary key for books
+- Use DATE type for dates
+- Empty return_date means the book is still borrowed
+- Consider using ON DELETE CASCADE for loan records
+
+**Bonus:**
+- Add audit columns (created_at, updated_at)
+- Implement a reservation system (members can reserve books)
+- Track book reviews and ratings
+- Calculate late fees for overdue books
 
 ## Summary
 
