@@ -429,16 +429,8 @@ collection.insert_many(records)
 - You'll store logs/events in MongoDB
 - But PostgreSQL is still your main tool
 
-## Next Steps
-
-Practice with the [Database Design Exercises](../exercises/database-design-exercises.md) to apply what you've learned!
-
 ## Additional Resources
 
 - [MongoDB University (Free)](https://university.mongodb.com/)
 - [Redis Documentation](https://redis.io/documentation)
 - [When to Use NoSQL](https://www.mongodb.com/nosql-explained/when-to-use-nosql)
-
----
-
-**Next**: [Database Design Exercises](../exercises/database-design-exercises.md)
