@@ -1,4 +1,3 @@
-
 # Module 3: Data Warehousing
 
 Learn how to build data warehouses - the foundation of business analytics and reporting.
